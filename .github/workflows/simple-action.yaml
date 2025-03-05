@@ -1,0 +1,15 @@
+name: simple-action
+on: [push]
+
+jobs:
+  simple-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simple JS action
+        id: greet
+        uses: actions/hello-world-docker-action@main
+        with:
+          who-to-greet: Tushar
+      - name: Print the output
+        run: echo ${{ steps.greet.outputs.time }}    
+  
