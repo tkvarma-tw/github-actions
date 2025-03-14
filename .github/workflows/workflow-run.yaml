@@ -1,0 +1,12 @@
+name: Workflow run dependency
+on:
+  workflow_run:
+    workflows: [Repository Events]
+    types: [completed]
+jobs:
+  echo_command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo command
+        run: |
+            echo "Workflow completed" 
