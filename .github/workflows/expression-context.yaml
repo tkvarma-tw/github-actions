@@ -1,7 +1,16 @@
 name: Expression context
-on: [push,workflow_dispatch]
+on: [push,workflow_dispatch,issues]
 run-name: "Expression and context by user ${{ github.actor }} and event: ${{ github.event_name}}"
 jobs:
+   run-on-workflow_dispatch:
+     runs-on: ubuntu-latest
+     if: contains(fromJson('[push,workflow_dispatch,issues]'), 'workflow_dispatch')
+     steps:
+        - name: Run only if the event is workflow-dispatch
+          if: contains(github.event.issue.labels.*.name, 'bug')
+          run: |
+             echo '${{ join(github.event.issue.labels.*.name,' ,')}}'
+          
    expressions_contexts:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
