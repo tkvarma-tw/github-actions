@@ -1,0 +1,26 @@
+name: Expression context
+on: [push,workflow_dispatch]
+jobs:
+   expressions_contexts:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Expressions
+          id: expressions
+          run: |
+             echo ${{ 1 }}
+             echo ${{ 'This is string' }}
+             echo ${{ null }}
+             echo ${{ true }}
+             echo ${{ 1 > 2 }}
+             echo ${{ true && false }}
+             echo ${{ true || (false && true) }}
+        - name: context
+          id: context     
+          run: |
+             echo ${{ toJson(github) }}
+             echo ${{ toJson(job) }}
+             echo ${{ toJson(secrets) }}
+             echo ${{ toJson(inputs) }}
+             echo ${{ toJson(steps) }}
+             echo ${{ toJson(runner) }}
+
