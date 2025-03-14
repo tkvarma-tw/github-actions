@@ -17,10 +17,10 @@ jobs:
         - name: context
           id: context     
           run: |
-             'echo ${{ toJson(github) }}'
-             'echo ${{ toJson(job) }}'
-             'echo ${{ toJson(secrets) }}'
-             'echo ${{ toJson(inputs) }}'
-             'echo ${{ toJson(steps) }}'
-             'echo ${{ toJson(runner) }}'
+             echo '${{ toJson(github) }}'
+             echo '${{ toJson(job) }}'
+             echo '${{ toJson(secrets) }}'
+             echo '${{ toJson(inputs) }}'
+             echo '${{ toJson(steps) }}'
+             echo '${{ toJson(runner) }}'
 
