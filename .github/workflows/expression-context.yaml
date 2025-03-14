@@ -1,5 +1,6 @@
 name: Expression context
 on: [push,workflow_dispatch]
+run-name: "Expression and context by user ${{ github.actor }} and event: ${{ github.event_name}}"
 jobs:
    expressions_contexts:
     runs-on: ubuntu-latest
